@@ -24,4 +24,6 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('restaurant.urls')),
+    path('auth/', include('djoser.urls')),  # Djoser endpoints
+    path('auth/', include('djoser.urls.authtoken')),  # Token-based endpoints
 ]
