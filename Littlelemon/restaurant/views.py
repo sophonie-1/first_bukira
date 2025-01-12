@@ -28,3 +28,6 @@ class MenuSingleView(RetrieveUpdateDestroyAPIView):
     serializer_class= MenuSerializer
     queryset = Menu.objects.all()
     lookup_field = "pk"
+# this view for test static file
+def index(request):
+    return render(request,'index.html',{})

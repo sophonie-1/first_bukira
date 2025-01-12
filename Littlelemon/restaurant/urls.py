@@ -1,5 +1,5 @@
 from django.urls import path,include
-from .views import MenuSerializerView,MenuSingleView,BookingViewSet
+from .views import MenuSerializerView,MenuSingleView,BookingViewSet,index
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken.views import obtain_auth_token
 
@@ -13,4 +13,7 @@ urlpatterns = [
     path('menu/<int:pk>/',MenuSingleView.as_view(),name='menu-detail'),
     path('restaurant/booking/',include(router.urls)),
     path('api-token-auth/',obtain_auth_token),
+    
+    
+    path('static-file/',index,name='index')
 ]
