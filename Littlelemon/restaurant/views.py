@@ -4,11 +4,14 @@ from rest_framework.generics import ListCreateAPIView,UpdateAPIView,RetrieveUpda
 from .models import Menu,Booking
 from .serializers import MenuSerializer,BookingSerializer
 from rest_framework.viewsets import ModelViewSet
-
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class BookingViewSet(ModelViewSet):
     serializer_class =BookingSerializer
     queryset = Booking.objects.all()
+    permission_classes =[IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
 
 
 
@@ -16,8 +19,12 @@ class BookingViewSet(ModelViewSet):
 class MenuSerializerView(ListCreateAPIView):
     serializer_class = MenuSerializer
     queryset =Menu.objects.all()
+    authentication_classes = [TokenAuthentication]
+    permission_classes =[IsAuthenticated]
     
 class MenuSingleView(RetrieveUpdateDestroyAPIView):
+    permission_classes =[IsAuthenticated]
+    authentication_classes = [TokenAuthentication]
     serializer_class= MenuSerializer
     queryset = Menu.objects.all()
     lookup_field = "pk"

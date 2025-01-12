@@ -39,7 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'restaurant.apps.RestaurantConfig',
     'rest_framework',
+    'djoser',
+    'rest_framework.authtoken',
 ]
+
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',  # Token Authentication
+        'rest_framework_simplejwt.authentication.JWTAuthentication',  # Optional: JWT support
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # Default permission
+    ],
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -128,3 +144,20 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',  # Use email instead of username for login
+    'USER_CREATE_PASSWORD_RETYPE': True,  # Require password confirmation during registration
+    'SEND_ACTIVATION_EMAIL': False,  # Disable email activation for simplicity
+    'SERIALIZERS': {
+        'user': 'djoser.serializers.UserSerializer',  # Default user serializer
+        'user_create': 'djoser.serializers.UserCreateSerializer',  # Default registration serializer
+    },
+}
+
+DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'restaurant.serializers.CustomUserCreateSerializer',
+    },
+}
