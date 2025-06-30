@@ -19,6 +19,12 @@ reservation handling, and user authentication—designed for frontend clients li
 - **Dev Tools:** Django Admin, DRF browsable API, Postman
 
 ## 📁 Project Structure
+littlelemon/
+├── menu/ # API for menu items
+├── reservations/ # API for reservations
+├── littlelemon_api/ # Project settings and URLs
+├── requirements.txt
+└── manage.py
 
 
 ```bash
